@@ -8,6 +8,8 @@ This selenium bot allows you to register for classes on the Johns Hopkins SIS po
 First, make sure all of the classes you want to register for are in your cart on SIS.
 
 ```
+git clone https://github.com/nkrishn9/SIS-Bot.git
+cd SIS-Bot
 pip install -r requirements.txt
 ```
 
