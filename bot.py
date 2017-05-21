@@ -5,13 +5,20 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException  
 from selenium.webdriver.support.ui import Select 
 import datetime
+import os 
+import sys
 
-# Enter Path of Chrome Driver 
-chromedriver = 'REPLACE'
-# Enter SIS Username
 usernameStr = 'REPLACE'
-# Enter SIS Password
 passwordStr = 'REPLACE'
+
+try:
+	usernameStr = sys.argv[1]
+	passwordStr = sys.argv[2]
+except BaseException:
+	print("\nError: This script should be run with the following (valid) flags:\n python bot.py SIS_Username SIS_Password\n")
+	sys.exit(-1)
+
+chromedriver = os.getcwd() + "/chromedriver"
 
 browser = webdriver.Chrome(chromedriver)
 browser.get(('https://sis.jhu.edu/sswf/'))
@@ -48,7 +55,7 @@ register = browser.find_element_by_id('ctl00_contentPlaceHolder_ibEnroll')
 # Wait until its 7 O'clock
 while True:
 	current_hour = datetime.datetime.now().time().hour
-	if current_hour == 7
+	if current_hour == 7:
 		register.click()
 		WebDriverWait(browser, 10000)
 		break
