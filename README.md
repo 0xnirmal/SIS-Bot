@@ -1,7 +1,8 @@
 # SIS Bot #
 
 This selenium bot allows you to register for classes on JHU SIS right at 7:00 AM, to virtually guarantee a spot in all of your classes. 
-WARNING: This has only been tested on Mac OS (and will probably only work on it). 
+
+### WARNING: This has only been tested on Mac OS (and will probably only work on it). ###
 
 ## Setup Instructions ##
 ```
