@@ -1,10 +1,12 @@
 # SIS Bot #
 
-This selenium bot allows you to register for classes on tbe Johns Hopkins SIS portal right at 7:00 AM, virtually guaranteeing a spot in all of your classes. 
+This selenium bot allows you to register for classes on the Johns Hopkins SIS portal right at 7:00 AM, virtually guaranteeing a spot in all of your classes. 
 
 ### WARNING: This has only been tested on Mac OS (and will probably only work on it). ###
 
 ## Setup Instructions ##
+First, make sure all of the classes you want to register for are in your cart on SIS.
+
 ```
 pip install -r requirements.txt
 ```
