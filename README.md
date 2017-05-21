@@ -16,7 +16,7 @@ SIS uses the naval observatory clock to determine time. Therefore, your system m
 3. Change "Apple Americas/U.S. (time.apple.com.)" to "tick.usno.navy.mil"
 4. Click the lock again to save your changes. 
 
-![time instructions](/time_instruc "Logo Title Text 1")
+![time instructions](https://github.com/nkrishn9/SIS-Bot/blob/master/time_instruct.png "Logo Title Text 1")
 
 
 ## Running Instructions ##
