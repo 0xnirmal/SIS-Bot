@@ -8,8 +8,8 @@ WARNING: This has only been tested on Mac OS (and will probably only work on it)
 pip install -r requirements.txt
 ```
 
-Begin running at least a minute before 7:00 AM. The program will wait/keep running until 7:00 AM to register you for your classes. 
 ## Running Instructions ##
+Begin running at least a minute before 7:00 AM. The program will wait/keep running until 7:00 AM to register you for your classes. 
 ```
 python bot.py SIS_Username SIS_Password
 ```
