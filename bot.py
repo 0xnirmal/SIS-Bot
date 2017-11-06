@@ -35,28 +35,22 @@ password.send_keys(passwordStr)
 submit1button = browser.find_element_by_id("submit1")
 submit1button.click()
 
-# Check for Notifications
-try:
-	element = WebDriverWait(browser, 10).until(
-        EC.presence_of_element_located((By.ID, "btnContinueToIsis"))
-    )
-	element.click()
-except NoSuchElementException:
-	print("No pending notifications... Continuing...")
+WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.ID, "aspnetForm")))
+browser.get("https://sis.jhu.edu/sswf/SSS/EnrollmentCart/SSS_EnrollmentCart.aspx?MyIndex=88199")
 
-browser.get("https://sis.jhu.edu/SSWF/SSS/EnrollmentCart/SSS_EnrollmentCart.aspx?MyIndex=88199")
 
 WebDriverWait(browser, 10)
 selectAll = browser.find_element_by_id('SelectAllCheckBox')
 selectAll.click()
 
 WebDriverWait(browser, 10)
-register = browser.find_element_by_id('ctl00_contentPlaceHolder_ibEnroll')
-# Wait until its 7 O'clock
+register = browser.find_element_by_id("ctl00_contentPlaceHolder_ibEnroll")
+
+# # Wait until its 7 O'clock
 while True:
 	current_hour = datetime.datetime.now().time().hour
-	if current_hour == 7:
-		register.click()
+	if current_hour == 0:
+		browser.execute_script("arguments[0].click();", register)
 		WebDriverWait(browser, 10000)
 		break
 
