@@ -18,9 +18,7 @@ except BaseException:
 	print("\nError: This script should be run with the following (valid) flags:\n python bot.py SIS_Username SIS_Password\n")
 	sys.exit(-1)
 
-chromedriver = os.getcwd() + "/chromedriver"
-
-browser = webdriver.Chrome(chromedriver)
+browser = webdriver.Chrome()
 browser.get(('https://sis.jhu.edu/sswf/'))
 nextButton = browser.find_element_by_id('btSignIn')
 nextButton.click()
