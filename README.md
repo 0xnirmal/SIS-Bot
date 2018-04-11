@@ -11,6 +11,7 @@ First, make sure all of the classes you want to register for are in your cart on
 git clone https://github.com/nkrishn9/SIS-Bot.git
 cd SIS-Bot
 pip install -r requirements.txt
+brew install chromedriver
 ```
 
 SIS uses the naval observatory clock to determine time. Therefore, your system must be synced to this clock to ensure the bot does not click too early or too late. On Mac OS, it is really easy to change your default. 
