@@ -34,7 +34,7 @@ browser.get(('https://sis.jhu.edu/sswf/'))
 signInButton = browser.find_element_by_id('linkSignIn')
 signInButton.click()
 
-# wait for and get username field
+# Wait for and get username field
 WebDriverWait(browser, 10).until(lambda d : d.find_element_by_id('i0116'))
 username = browser.find_element_by_id('i0116')
 username.send_keys(usernameStr)
@@ -42,7 +42,7 @@ username.send_keys(usernameStr)
 nextButton = browser.find_element_by_id('idSIButton9')
 nextButton.click()
 
-# wait for and get password field
+# Wait for and get password field
 WebDriverWait(browser, 10).until(lambda d : d.find_element_by_id('i0118'))
 password = browser.find_element_by_id('i0118')
 password.send_keys(passwordStr)
@@ -58,11 +58,10 @@ WebDriverWait(browser, 10).until(lambda d : d.find_element_by_id('SelectAllCheck
 selectAll = browser.find_element_by_id('SelectAllCheckBox')
 selectAll.click()
 
-#WebDriverWait(browser, 10)
 WebDriverWait(browser, 10).until(lambda d : d.find_element_by_id('ctl00_contentPlaceHolder_ibEnroll'))
 register = browser.find_element_by_id("ctl00_contentPlaceHolder_ibEnroll")
 
-# # Wait until its time
+# Wait until its time
 while True:
 	current_hour = datetime.datetime.now().time().hour
 	current_minute = datetime.datetime.now().time().minute
