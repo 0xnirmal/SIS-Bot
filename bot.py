@@ -1,12 +1,12 @@
+import os 
+import sys
 import argparse
+from datetime import datetime
 from dateutil import parser
 from getpass import getpass
 from selenium.webdriver import Chrome
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
-import datetime
-import os 
-import sys
 
 help_text = "This selenium bot allows you to register for classes on the Johns Hopkins SIS portal\
  right at 7:00 AM, virtually guaranteeing a spot in all of your classes."
@@ -61,11 +61,12 @@ selectAll.click()
 WebDriverWait(browser, 10).until(lambda d : d.find_element_by_id('ctl00_contentPlaceHolder_ibEnroll'))
 register = browser.find_element_by_id("ctl00_contentPlaceHolder_ibEnroll")
 
+
 # Wait until its time
 while True:
-	current_hour = datetime.datetime.now().time().hour
-	current_minute = datetime.datetime.now().time().minute
-	current_second = datetime.datetime.now().time().second
+	current_hour = datetime.now().hour
+	current_minute = datetime.now().minute
+	current_second = datetime.now().second
 	time = "Waiting... " + format(current_hour, '02') + ":" + format(current_minute, '02') + ":" + format(current_second, '02')
 	print(time, end="\r")
 	if current_hour >= hour_set and current_minute >= minute_set:
