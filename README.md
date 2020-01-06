@@ -22,7 +22,7 @@ SIS uses the naval observatory clock to determine time. Therefore, your system m
 3. Change "Apple Americas/U.S. (time.apple.com.)" to "tick.usno.navy.mil"
 4. Click the lock again to save your changes. 
 
-![time instructions](https://github.com/nkrishn9/SIS-Bot/blob/master/time_instruct.png "macOS")
+![time instructions](./time_instruct.png "macOS")
 
 On Windows, you'll have to manually set the time, as it can be inaccurate even when synced to the right clock.
 
