@@ -1,34 +1,35 @@
 import os 
 import sys
+import datetime
 import argparse
-from datetime import datetime
 from dateutil import parser
 from getpass import getpass
 from selenium.webdriver import Chrome
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 
+# Set up commandline arguments
 help_text = "This selenium bot allows you to register for classes on the Johns Hopkins SIS portal\
  right at 7:00 AM, virtually guaranteeing a spot in all of your classes."
 
 args_parser = argparse.ArgumentParser(description=help_text)
-
 args_parser.add_argument('--time', '-t', help="set time to register at, formatted as hh:mm in military time")
-
 args = args_parser.parse_args()
 
-hour_set = 7
-minute_set = 0
+# Time to register at
+registration_time = datetime.datetime.combine(datetime.date.today(), datetime.time(hour=7))
 
 if args.time:
-	time_input = parser.parse(args.time)
-	hour_set = time_input.hour
-	minute_set = time_input.minute
+	registration_time = parser.parse(args.time)
+
+if registration_time <= datetime.datetime.now():
+	registration_time += datetime.timedelta(days=1)
+
 
 usernameStr = input('SIS username: ')
 passwordStr = getpass('SIS password: ')
 
-
+# Start the Selenium WebDriver
 browser = Chrome()
 browser.get(('https://sis.jhu.edu/sswf/'))
 signInButton = browser.find_element_by_id('linkSignIn')
@@ -59,18 +60,23 @@ selectAll = browser.find_element_by_id('SelectAllCheckBox')
 selectAll.click()
 
 WebDriverWait(browser, 10).until(lambda d : d.find_element_by_id('ctl00_contentPlaceHolder_ibEnroll'))
-register = browser.find_element_by_id("ctl00_contentPlaceHolder_ibEnroll")
+register_button = browser.find_element_by_id("ctl00_contentPlaceHolder_ibEnroll")
 
 
 # Wait until its time
+refresh = True
+refresh_time = datetime.datetime.now()
+
 while True:
-	current_hour = datetime.now().hour
-	current_minute = datetime.now().minute
-	current_second = datetime.now().second
-	time = "Waiting... " + format(current_hour, '02') + ":" + format(current_minute, '02') + ":" + format(current_second, '02')
+	curr_time = datetime.datetime.now()
+	time = "Waiting... " + curr_time.strftime('%H:%M:%S')
 	print(time, end="\r")
-	if current_hour >= hour_set and current_minute >= minute_set:
+
+	
+
+	if curr_time >= registration_time:
 		print("Executing")
-		browser.execute_script("arguments[0].click();", register)
+		#browser.execute_script("arguments[0].click();", register_button)
+		register_button.click()
 		WebDriverWait(browser, 10000)
 		break
