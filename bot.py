@@ -72,7 +72,11 @@ while True:
 	time = "Waiting... " + curr_time.strftime('%H:%M:%S')
 	print(time, end="\r")
 
-	
+	try:
+		alert = browser.switch_to.alert
+		alert.accept()
+	except:
+		pass
 
 	if curr_time >= registration_time:
 		print("Executing")
