@@ -66,8 +66,6 @@ register_button = browser.find_element_by_id("ctl00_contentPlaceHolder_ibEnroll"
 
 
 # Wait until its time
-refresh = True
-refresh_time = datetime.datetime.now()
 
 while True:
 	curr_time = datetime.datetime.now()
@@ -82,7 +80,6 @@ while True:
 
 	if curr_time >= registration_time:
 		print("Executing")
-		#browser.execute_script("arguments[0].click();", register_button)
 		register_button.click()
 		WebDriverWait(browser, 10000)
 		break
