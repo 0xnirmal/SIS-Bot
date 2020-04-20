@@ -13,7 +13,7 @@ help_text = "This selenium bot allows you to register for classes on the Johns H
  right at 7:00 AM, virtually guaranteeing a spot in all of your classes."
 
 args_parser = argparse.ArgumentParser(description=help_text)
-args_parser.add_argument('--time', '-t', help="set time to register at, formatted as hh:mm in military time")
+args_parser.add_argument('--time', '-t', help="set time to register at, formatted as hh:mm in military (24 hour) time")
 args = args_parser.parse_args()
 
 # Time to register at
@@ -22,11 +22,13 @@ registration_time = datetime.datetime.combine(datetime.date.today(), datetime.ti
 if args.time:
 	registration_time = parser.parse(args.time)
 
+# If the time passed has already passed for the current day, then we want to
+# register at that time but on the next day
 if registration_time <= datetime.datetime.now():
 	registration_time += datetime.timedelta(days=1)
 
 
-usernameStr = input('SIS username: ')
+usernameStr = input('SIS email (<jhed>@jh.edu): ')
 passwordStr = getpass('SIS password: ')
 
 # Start the Selenium WebDriver
